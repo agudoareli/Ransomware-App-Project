@@ -6,7 +6,7 @@ I selected this project because small businesses that don't have a cybersecurity
 This matters in cybersecurity because ransomware attacks are very common and a lot of people do not know how to prevent it or treat it once it has happened. 
 Others have already created ransomware protection apps that provide education and scans, but there does not seem to be an app that also provides public trends.  
 I bring beginner cybersecurity knowledge on CVEs and coding experience.  
-The knew knowledge I will need is education on more ransomware attacks and names, and I will also need to learn how to code in a front-end language to create a UI. 
+The new knowledge I will need is education on more ransomware attacks and names, and I will also need to learn how to code in a front-end language to create a UI. 
 I hope to learn how to build an application from scratch and a lot of new knowledge on modern and common threats. 
  
 Goal: By the end of the project, I hope to learn how to build interactive applications from scratch and also be more informed about current cybersecurity threats.  
