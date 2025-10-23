@@ -8,19 +8,17 @@ import pandas as pd # helps us work with data tables
 from datetime import datetime # helps us work with date and time
 
 class TrendsAPI:
-  def __init__(self):
-    google_trends_connection = TrendReq(hl='en-US', tz=360) # connects this app to google trends, asks for data in English (hl) and in UTC+6 timeszone (tz)
-    early_warning_signs = []  # make a str list of early warning signs from the given documents
-    prevention_tips = [] # make a str list of prevention tips from the given documents
-
   def _fetch_google_trends(self, keyword): # define a function to fetch the google trends using a keyword
-    self.google_trends_connection.build_payload([keyword], cat=0, timeframe='today 12-m', geo='', gprop='')
+    request = self.TrendReq(hl='en-US', tz=360).build_payload([keyword], cat=0, timeframe='today 12-m', geo='', gprop='')
+    self.time.sleep(1.5)
     # [keyword]: a list of the search term
     # cat=0: no specific category
     # timeframe='today 12-m': search from the last 12 months of data
     # geo='': no specific country
     # gprop='': no search filter, search from any info source
-    data = self.google_trends_connection.interest_over_time() # downloads the trend data as a table, rows = days/weeks, cols = the frequency of search for the keyword
+    
+    data = self.request.interest_over_time() # downloads the trend data as a table, rows = days/weeks, cols = the frequency of search for the keyword
+    self.time.sleep(1.5)
     if not data:
       return "No data available for this keyword."
     # Plotting the data
@@ -38,8 +36,8 @@ class TrendsAPI:
 
   def fetch_google_trends_safely(self, keyword):
     try:
-      self._fetch_google_trends(keyword)
-      return
+      result = self._fetch_google_trends(keyword)
+      return result 
     except:
       return "Too many requests, please wait 15 seconds."
 
