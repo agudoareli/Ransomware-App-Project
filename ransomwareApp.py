@@ -58,19 +58,14 @@ class RansomwareApp:
             background-color: #9A9AEB; !important; 
         }
         """
-        with gr.Blocks(css=background_css) as app:      # this is the wrapper function for the entire UI 
+        with gr.Blocks() as app:      # this is the wrapper function for the entire UI 
             gr.HTML("""
-            <div style="text-align:center; padding:20px;"color:gray;>
-                        <h1>Welcome, this is a Ransomware Awareness App</h1>
-                        <h2>Learn early warning signs of ransomware, explore Google Trends data, and learn prevention tips.</h2>
-            </div>
+                    <h1 style='font-size:50px; text-align: center; font-weight:bold;'>Ransomware Awareness</h1>
+                    <h2 style='font-size: 15px; text-align: center; font-weight:bold'>Learn early warning signs of ransomware, explore Google Trends data, and learn prevention tips.</h2>
+                    <img src="https://www.radware.com/RadwareSite/MediaLibraries/WordPressImages/uploads/2018/10/origin_of_ransomware_and_business_impacts-960x641.jpg" 
+                    style="display:block; width:100%; height:auto; margin:0 auto;">
             """)  
-            gr.HTML("""
-            <div style="text-align:center; margin-top:20px;">
-                <img src="https://www.radware.com/RadwareSite/MediaLibraries/WordPressImages/uploads/2018/10/origin_of_ransomware_and_business_impacts-960x641.jpg" 
-                    style="max-width:50%; border-radius:10px; display:inline-block;">
-            </div>
-            """)            
+                    
             button1_markdown = gr.Markdown() # markdown outputs text 
             warning_button = gr.Button("Show Warning Signs")    # button 1
             warning_button.click(fn=self.get_warning_signs, inputs =[], outputs=button1_markdown)    # button 1 trigger 

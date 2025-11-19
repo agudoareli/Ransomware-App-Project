@@ -26,13 +26,13 @@ class TrendsAPI:
         plt.plot(data.index, data[keyword], color='blue', label=keyword)
         plt.title(f"Google Trends: {keyword}")
         plt.xlabel("Date")
-        plt.ylabel("Search Interest Percentage")
+        plt.ylabel("Relative Search Interest (0-100)")
         plt.grid(True)
         plt.legend()
         plt.tight_layout()
         plot_path = "trend_plot.png"
         plt.savefig(plot_path)
         plt.close()
-        return plot_path, f"Search Interest Over Time data for '{keyword}'."
+        return plot_path, f"This chart is displaying relative search interest of {keyword} over the last 12 months. {keyword} was searched the most on {data[keyword].idxmax().date()}."
         ####
-        # FIXME in the information tab describe the chart in words and give more info about keyword (ex what is the peak on the chart)
+        # FIXME in the information tab use another api to give the user a definion of the keyword they search 
