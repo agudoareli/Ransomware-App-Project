@@ -2,7 +2,8 @@ import gradio as gr  # creates the UI
 from pytrends.request import TrendReq  # the Google Trends API
 import matplotlib.pyplot as plt  # draws the chart 
 import pandas as pd  # fills the chart with data 
-from trendsAPI import TrendsAPI  # the API class defined in trendsAPI.py
+from trendsAPI import TrendsAPI  # my trendsAPI.py
+from glossary import UI_Glossary # import my glossary file 
 
 class RansomwareApp:
     def __init__(self):
@@ -27,7 +28,7 @@ class RansomwareApp:
             "Remote Desktop Protocol (RDP) or other remote services exposed to the Internet and being used.",
             "Ransom note pop‑ups or files demanding payment appear on screen."
         ]
-        return "\n".join(f"{i+1}. {sign}" for i, sign in enumerate(signs))
+        return "\n".join(f"⚠️ {sign}\n" for sign in signs)
 
     def get_prevention_tips(self):
         tips = [
@@ -42,7 +43,7 @@ class RansomwareApp:
             "Do not use high‑privilege accounts for everyday work; restrict administrative rights and manage privileged accounts carefully.",
             "**Report ransomware incidents and do not automatically pay ransom; paying may not restore your data and encourages future attacks.**"
         ]
-        return "\n".join(f"{i+1}. {tip}" for i, tip in enumerate(tips))
+        return "\n".join(f"✅ {tip}\n" for tip in tips)
 
     def analyze_keyword(self, keyword):
         keyword = keyword.strip() # prepare the keyword for a google trends request, return the file and message if successful
@@ -53,11 +54,6 @@ class RansomwareApp:
         return plot_path, message
 
     def launch(self): 
-        background_css = """ 
-        body, .gradio-container {
-            background-color: #9A9AEB; !important; 
-        }
-        """
         with gr.Blocks() as app:      # this is the wrapper function for the entire UI 
             gr.HTML("""
                     <h1 style='font-size:50px; text-align: center; font-weight:bold;'>Ransomware Awareness</h1>
@@ -88,10 +84,11 @@ class RansomwareApp:
             button3_markdown = gr.Markdown() 
             prevention_button = gr.Button("Show Prevention Tips") # button 3 
             prevention_button.click(fn=self.get_prevention_tips, inputs =[], outputs=button3_markdown)   # button 3 trigger 
+
+            button4_markdown = gr.Markdown()
+            glossary_button = gr.Button("Common Cybersecurity Terms- Glossary")
+            glossary_button.click(fn=UI_Glossary().get_glossary, inputs=[], outputs=button4_markdown)   # button 4 trigger 
             gr.Markdown("----------")
             gr.Markdown("Based on guidance from [CISA](https://www.cisa.gov/stopransomware) and [No More Ransom Project](https://www.nomoreransom.org). "
-            "\tPlease take the time to explore these websites and share this information with your friends and coworkers.")
+            "\tPlease take the time to explore these websites and share this information with your friends and co-workers.")
         app.launch()
-###
-# FIXME make all the letters colored black (they keep changing color between morning and afternoon)
-# FIXME add a spanish UI translator ? What use does this have to the user? 

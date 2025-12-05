@@ -13,14 +13,14 @@ class TrendsAPI:
 
     def fetch_google_trends(self, keyword):
         try:
-            pytrends = TrendReq(hl='en-US', tz=360) # sets language and timezone
+            pytrends = TrendReq(hl='en-US', tz=360, retries=3, backoff_factor=0.5) # sets language and timezone
             pytrends.build_payload([keyword], timeframe='today 12-m') # prepares the request by passing in key-words and timeframe
-            time.sleep(2) # pause the program for 2sec to avoid overlaping and crashing
             data = pytrends.interest_over_time()  # fetches the data with the given payload
         except Exception as e:
-            return f"Error fetching data from Google Trends: {str(e)}"
+            print("Error: ", e)
+            return "", f"Error fetching data from Google Trends: {str(e)}"    # analyzeKeyword() expects 2 values 
         if data.empty:
-            return f"No data available for '{keyword}'. Please try another keyword."
+            return "", f"No data available for '{keyword}'. Please try another keyword."
         # plotting the chart outline using matplotlib and pandas 
         plt.figure(figsize=(10, 4))
         plt.plot(data.index, data[keyword], color='blue', label=keyword)
@@ -34,5 +34,4 @@ class TrendsAPI:
         plt.savefig(plot_path)
         plt.close()
         return plot_path, f"This chart is displaying relative search interest of {keyword} over the last 12 months. {keyword} was searched the most on {data[keyword].idxmax().date()}."
-        ####
-        # FIXME in the information tab use another api to give the user a definion of the keyword they search 
+        
