@@ -1,0 +1,47 @@
+class UI_Glossary:
+    def __init__(self):
+        self.glossary = {
+            "Ransomware": "Malicious software that encrypts files or locks systems and demands payment for access or decryption.",
+            "Malware": "Any software designed to damage, disrupt, or gain unauthorized access to a system.",
+            "Phishing": "A technique where attackers send fraudulent emails or messages to trick you into clicking a link or revealing information.",
+            "Spear Phishing": "A targeted phishing attack aimed at a specific individual or organization.",
+            "Social Engineering": "Manipulating people into giving up confidential information or performing harmful actions.",
+            "Attack Surface": "All the possible points where an attacker can try to access or exploit a system.",
+            "Vulnerability": "A weakness in software, hardware, or processes that attackers can exploit.",
+            "Zero-Day": "A flaw unknown to the software vendor, with no patch available, often exploited by attackers.",
+            "Exploit": "A tool or technique used to take advantage of a vulnerability.",
+            "Encryption": "The process of converting data into an unreadable format that requires a key to unlock.",
+            "Decryption Key": "A code or tool used to unlock encrypted data.",
+            "Initial Access": "The first step an attacker uses to enter a system, such as phishing or exploiting a vulnerability.",
+            "Lateral Movement": "When attackers move from one system to another inside a network after gaining access.",
+            "Persistence": "Techniques attackers use to stay inside a system even after reboots or attempts to remove them.",
+            "Privilege Escalation": "When attackers increase their access level, often from a normal user to an admin.",
+            "Credential Theft": "Stealing usernames, passwords, authentication tokens, or keys.",
+            "Command and Control (C2)": "Servers or infrastructure that attackers use to send commands to infected devices.",
+            "Payload": "The harmful part of malware that performs actions like encryption or data theft.",
+            "Backup": "A copy of files or systems used for recovery after data loss or ransomware.",
+            "Immutable Backup": "A backup that cannot be altered or deleted, even by ransomware.",
+            "Endpoint": "Any device connected to a network, such as a laptop, phone, server, or workstation.",
+            "Firewall": "A security tool that blocks unauthorized network traffic.",
+            "Antivirus / Anti-malware": "Software that detects and removes malicious programs.",
+            "EDR (Endpoint Detection and Response)": "Advanced security tools that detect suspicious behavior on endpoints.",
+            "MFA (Multi-Factor Authentication)": "A login method requiring two or more verification steps, making attacks harder.",
+            "VPN (Virtual Private Network)": "A secure encrypted connection that protects data when connecting remotely.",
+            "Brute Force Attack": "Repeatedly trying passwords until the correct one is found.",
+            "Data Exfiltration": "When attackers steal data from a system or network.",
+            "Data Breach": "Unauthorized access to sensitive information.",
+            "Patch": "An update that fixes vulnerabilities or bugs in software.",
+            "Supply Chain Attack": "An attack that targets third-party vendors or updates to compromise systems.",
+            "RDP (Remote Desktop Protocol)": "A Windows tool for remote access, often targeted by attackers if left exposed.",
+            "IOC (Indicator of Compromise)": "Evidence that a system may be compromised, like unusual traffic or known malware files.",
+            "Incident Response": "Steps taken to detect, contain, and recover from an attack.",
+            "Recovery": "Restoring systems to normal after an incident or ransomware attack.",
+            "Threat Actor": "An individual or group performing malicious cyber activities.",
+            "Botnet": "A network of infected devices controlled by an attacker.",
+            "Trojan": "Malware disguised as legitimate software.",
+            "Worm": "Malware that spreads automatically without user interaction.",
+            "Keylogger": "Malware that captures everything typed on a keyboard."
+        }
+        
+    def get_glossary(self):
+        return "\n".join(f"📖 {word}: {definition}\n" for word, definition in self.glossary.items())
